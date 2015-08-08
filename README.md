@@ -18,9 +18,10 @@ Other behaviour is affected via the following environment variables:
 - **MONGODB**: MongoDB Database URL (default: mongodb://localhost/amqp)
 - **MONGOCOLLECTION**: Database collection to save to (default: messages)
 - **TRANSLATECONTENT**: translate content field (default: true)
+- **REQUEUEERRORS**: MongoDB errors rejected w/ requeue option (default: false)
 
-If messages fail to be saved to MongoDB, they will be rejected (but NOT
-requeued).
+**WARNING**: If you set REQUEUEERRORS=true, the message could be redelivered,
+  possibly resulting in a loop! Drink this option responsibly!
 
 
 ## Data Structures

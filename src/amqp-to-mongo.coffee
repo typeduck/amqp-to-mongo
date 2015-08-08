@@ -12,6 +12,7 @@ CONFIG = require("convig").env({
   MONGODB: "mongodb://localhost/amqp"
   MONGOCOLLECTION: "messages"
   TRANSLATECONTENT: true
+  REQUEUEERRORS: false
 })
 
 if not (queueNames = process.argv.slice(2)).length
@@ -78,7 +79,7 @@ class MessageSaver
     return @channel.ack(msg) if not err
     console.error(err)
     console.error("[%s] Failed to save: %s", new Date(), JSON.stringify(doc))
-    @channel.reject(msg, false)
+    @channel.reject(msg, REQUEUEERRORS)
 
 # Serializes message for JSON output
 finalTranslate = (base) ->
