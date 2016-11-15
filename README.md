@@ -51,8 +51,8 @@ Content translation of the *content* field occurs prior to saving unless
 **TRANSLATECONTENT** is turned off. When turned off, the messages are saved as
 binary types.
 
-If the AMQP properties content-type and/or content-encoding are specified, the
-content will be translated.
+If the AMQP message properties *content-type* and/or *content-encoding* are
+specified, the content will be translated.
 
 - *application/json* is parsed into JSON object
 - *text/\** is read as a string

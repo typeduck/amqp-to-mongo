@@ -1,5 +1,3 @@
-compile:
-	coffee -o js -c src
-publish: compile
+publish:
 	git push && git push --tags
 	npm publish

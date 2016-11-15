@@ -2,6 +2,6 @@
 
 var path = require('path');
 var fs   = require('fs');
-var lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../js');
+var lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
 
 require(lib + '/amqp-to-mongo')
