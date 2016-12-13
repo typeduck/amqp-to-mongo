@@ -18,6 +18,7 @@ Other behaviour is affected via the following environment variables:
 - **MONGODB**: MongoDB Database URL (default: mongodb://localhost/amqp)
 - **MONGOCOLLECTION**: Database collection to save to (default: messages)
 - **TRANSLATECONTENT**: translate content field (default: true)
+- **FORCECONTENTTYPE**: specify a `content-type` (eg: 'application/json') to override the message content-type for when you dont have control over the AMQP headers on the messages being published. Requires **TRANSLATECONTENT** to be set to `true` in order to work (default: false)
 - **REQUEUEERRORS**: MongoDB errors rejected w/ requeue option (default: false)
 
 **WARNING**: If you set REQUEUEERRORS=true, the message could be redelivered,
