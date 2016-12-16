@@ -59,3 +59,24 @@ specified, the content will be translated.
 - *text/\** is read as a string
 - *everything else* is saved as a string, encoded in ascii, base64, or utf-8,
   depending on content-encoding and whether possible to convert to utf-8
+
+
+## Docker
+
+First, build the docker image:
+
+```sh
+docker build -t amqp-to-mongo .
+```
+
+Then, you can start a foreground container like so (use `Ctrl+C` to exit it):
+
+```sh
+docker run -it --rm -e AMQPHOST=amqp://guest:guest@localhost -e MONGODB=mongodb://localhost/amqp amqp-to-mongo amqp-queue-name
+```
+
+If you want to start the container as a background process, you can do it like do:
+
+```sh
+docker run -d --restart=unless-stopped -e AMQPHOST=amqp://guest:guest@localhost -e MONGODB=mongodb://localhost/amqp amqp-to-mongo amqp-queue-name
+```
